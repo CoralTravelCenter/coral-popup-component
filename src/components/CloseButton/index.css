@@ -1,0 +1,17 @@
+:host {
+	width: 48px;
+	height: 48px;
+	display: var(--component-display, none);
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+	border-radius: 100%;
+	position: absolute;
+	top: -1rem;
+	right: -1rem;
+}
+
+.icon {
+	width: 32px;
+	height: 32px;
+}

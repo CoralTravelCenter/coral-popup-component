@@ -21,6 +21,22 @@ body {
 	font-weight: 400;
 	line-height: normal;
 	grid-column: 1/3;
+	margin: 0;
 }
 
+.coral-promo__title {
+	font-size: 32px;
+	color: #fff;
+}
 
+.coral-promo.coral-promo-active {
+	--component-display: flex;
+}
+
+.coral-promo.coral-promo-active:after {
+	opacity: 1;
+}
+
+.coral-promo:hover .close-button {
+	--component-display: flex;
+}

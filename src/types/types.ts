@@ -1,4 +1,4 @@
-export type PopUpManager = {
+export interface PopUpManager {
 	title: string,
 	visual: string
 }
