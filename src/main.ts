@@ -1,6 +1,9 @@
-import {CoralPopupComponent} from "./components/CoralPopup";
+import dayjs from 'dayjs';
+dayjs().format()
 import {_createElement} from './utils.ts'
 import {PopUpManager} from "./types/types.ts";
+
+import {CoralPopupComponent} from "./components/CoralPopup";
 import {PromotionComponent} from "./components/Promotion";
 import {CloseButtonComponent} from "./components/CloseButton";
 
@@ -12,11 +15,16 @@ export class PopUpManagerInit {
 
 	constructor(settings: PopUpManager[]) {
 		if (settings.length) {
-			this.SETTINGS = settings;
+			this.SETTINGS = this.checkPromoExpires(settings);
 			this.init();
 		} else {
-			console.warn("Настроки акций не указаны");
+			console.warn("SETTINGS пуст или не определен!");
 		}
+	}
+
+	private checkPromoExpires(settings: PopUpManager[]): PopUpManager[] {
+		console.log(settings)
+    return settings.filter(promo => dayjs().isBefore(dayjs(promo.promo_expires)));
 	}
 
 	private init(): void {
@@ -61,7 +69,7 @@ export class PopUpManagerInit {
 	}
 
 	private createCustomElements(): void {
-		console.log("Создание кастомных элементов с SETTINGS", this.SETTINGS);
+		console.log("Список активных акций", this.SETTINGS);
 		this.createPopup();
 
 		if (!this.SETTINGS || this.SETTINGS.length === 0) {
