@@ -1,10 +1,6 @@
-import {PopUpManager} from "./types/types.ts";
+import {PopUpManagerInit} from "./main.ts";
 
-declare const window: {
-	_popUpManager: PopUpManager[]
-} & Window
-
-window._popUpManager = [
+new PopUpManagerInit([
 	{
 		title: '3000 бонусов<br> на путешествие',
 		visual: '/promo-1.jpg'
@@ -17,4 +13,4 @@ window._popUpManager = [
 		title: 'Бонусы<br> за отзыв',
 		visual: '/promo-3.jpg'
 	}
-]
+]);

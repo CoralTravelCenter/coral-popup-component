@@ -4,22 +4,18 @@ import {PopUpManager} from "./types/types.ts";
 import {PromotionComponent} from "./components/Promotion";
 import {CloseButtonComponent} from "./components/CloseButton";
 
-declare const window: {
-	_popUpManager: PopUpManager[]
-} & Window
-
-class PopUpManagerInit {
+export class PopUpManagerInit {
 	private DOM: HTMLElement | null = document.getElementById('app');
 	private PARENT: HTMLElement | null = null;
-	private SETTINGS: PopUpManager[] | null = null;
-	private static elementsDefined = false; // Проверка регистрации customElements
+	private readonly SETTINGS: PopUpManager[] | null = null;
+	private static elementsDefined = false;
 
 	constructor(settings: PopUpManager[]) {
 		if (settings.length) {
 			this.SETTINGS = settings;
 			this.init();
 		} else {
-			console.warn("window._popUpManager не найден");
+			console.warn("Настроки акций не указаны");
 		}
 	}
 
@@ -94,8 +90,3 @@ class PopUpManagerInit {
 		});
 	}
 }
-
-// Создание экземпляра
-new PopUpManagerInit(window._popUpManager);
-
-
